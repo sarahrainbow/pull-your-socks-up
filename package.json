@@ -1,0 +1,29 @@
+{
+  "name": "pull-your-socks-up",
+  "version": "1.0.0",
+  "description": "A sock selling quest",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx nodemon src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sarahrainbow/pull-your-socks-up.git"
+  },
+  "author": "Sarah Rainbow",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sarahrainbow/pull-your-socks-up/issues"
+  },
+  "homepage": "https://github.com/sarahrainbow/pull-your-socks-up#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.20.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.5.4",
+    "typescript": "^5.6.2"
+  }
+}
