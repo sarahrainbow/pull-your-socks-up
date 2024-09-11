@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
 import dotenv from 'dotenv';
-import { Flow } from "../lib/MarketFlow";
+import { Flow } from "../lib/Flow";
 
 dotenv.config();
 

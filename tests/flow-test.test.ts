@@ -1,6 +1,6 @@
 import {expect, jest, describe, beforeEach, afterEach, it} from '@jest/globals';
 import { TriggerEvent } from '../lib/Models';
-import { Flow } from '../lib/MarketFlow';
+import { Flow } from '../lib/Flow';
 
 describe('Flow.triggerFlow', () => {
     const flow = new Flow();
