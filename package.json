@@ -4,7 +4,7 @@
   "description": "A sock selling quest",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "npx nodemon src/index.ts"
   },
   "repository": {
@@ -19,11 +19,14 @@
   "homepage": "https://github.com/sarahrainbow/pull-your-socks-up#readme",
   "dependencies": {
     "dotenv": "^16.4.5",
-    "express": "^4.20.0"
+    "express": "^4.20.0",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
     "@types/node": "^22.5.4",
+    "jest": "^29.7.0",
     "typescript": "^5.6.2"
   }
 }

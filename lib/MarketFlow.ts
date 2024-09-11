@@ -21,7 +21,7 @@ export class Flow {
         }
     }
 
-    private async handleWebsiteSignupEvent(event: TriggerEvent): Promise<void> {
+    async handleWebsiteSignupEvent(event: TriggerEvent): Promise<void> {
         return new Promise((resolve, reject) => {
             console.log(`Website email sending in ${this.delayInMins} minute(s)`)
             setTimeout(async () => {
@@ -37,7 +37,7 @@ export class Flow {
         });
     }
 
-    private async handleSockPurchasedEvent(event: TriggerEvent): Promise<void> {
+    async handleSockPurchasedEvent(event: TriggerEvent): Promise<void> {
         try {
             await sendEmail();
             console.log(`Sock purchase email successfully sent to ${event.userEmail}`);
