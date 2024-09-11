@@ -13,11 +13,12 @@ export class Flow {
     // Method to trigger the flow based on the event type
     public async triggerFlow(event: TriggerEvent): Promise<void> {
         if (event.eventName === 'websiteSignup') {
-            return await this.handleWebsiteSignupEvent(event);
+            await this.handleWebsiteSignupEvent(event);
         } else if (event.eventName === 'sockPurchased') {
-            return await this.handleSockPurchasedEvent(event);
+            await this.handleSockPurchasedEvent(event);
+        } else {
+            throw new Error(`Invalid event name: ${event.eventName}`)
         }
-        console.error("Invalid event name", event.eventName);
     }
 
     private async handleWebsiteSignupEvent(event: TriggerEvent): Promise<void> {
@@ -25,9 +26,9 @@ export class Flow {
             console.log(`Website email sending in ${this.delayInMins} minute(s)`)
             setTimeout(async () => {
             try {
-                const emailSentSuccessfully = await sendEmail();
-                console.log(emailSentSuccessfully, `Website signup email successfully sent to ${event.userEmail}`);
-                resolve(emailSentSuccessfully);
+                await sendEmail();
+                console.log(`Website signup email successfully sent to ${event.userEmail}`);
+                resolve();
             } catch (error) {
                 console.error('Failed to send email:', error, event.userEmail);
                 reject(false);
@@ -38,7 +39,7 @@ export class Flow {
 
     private async handleSockPurchasedEvent(event: TriggerEvent): Promise<void> {
         try {
-            const result = await sendEmail();
+            await sendEmail();
             console.log(`Sock purchase email successfully sent to ${event.userEmail}`);
         } catch (error) {
             console.error('Failed to send email:', error, event.userEmail);

@@ -16,8 +16,12 @@ app.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`);
 });
 
-app.post('/email', (req: Request, res: Response) => {
-    res.status(200).send({ message: 'Email processing started', data: req.body });
-    const flow = new Flow();
-    flow.triggerFlow(req.body);
+app.post('/email', async (req: Request, res: Response) => {
+    try {
+        const flow = new Flow();
+        await flow.triggerFlow(req.body);
+        res.status(200).send({ message: 'Email processing started', data: req.body });
+    } catch(exec: any) {
+        res.status(500).send({ message: 'Error processing email flow', error: exec.message });
+    }
 })

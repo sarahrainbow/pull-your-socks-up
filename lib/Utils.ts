@@ -8,7 +8,7 @@ export const sendEmail = async (): Promise<void> => {
     await new Promise(resolve => setTimeout(resolve, 1000));
 
     // 95% chance to return true, 5% chance to throw error - emails fail
-    if (randomNumber < 0.95) {
+    if (randomNumber > 0.95) {
         throw new Error("Email failed to send");
     }
 }
