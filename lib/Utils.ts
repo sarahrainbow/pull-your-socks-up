@@ -1,6 +1,7 @@
 // a home for common, reusable tasks
+import { Email } from "./Models";
 
-export const sendEmail = async (): Promise<void> => {
+export const sendEmail = async (email: Email): Promise<void> => {
     // Generate a random number between 0 and 1
     const randomNumber = Math.random();
 
