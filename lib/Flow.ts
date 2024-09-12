@@ -20,6 +20,7 @@ export class Flow {
                 await this.handleSockPurchasedEvent(event);
                 break;
             default:
+                console.error(`Invalid event name: ${event.eventName}`);
                 throw new Error(`Invalid event name: ${event.eventName}`);
         }
     }
@@ -28,14 +29,15 @@ export class Flow {
         return new Promise((resolve, reject) => {
             console.log(`Website email sending in ${this.delayInMins} minute(s)`)
             setTimeout(async () => {
-            try {
-                await sendEmail(welcomeEmail);
-                console.log(`Website signup email successfully sent to ${event.userEmail}`);
-                resolve();
-            } catch (error) {
-                console.error('Failed to send email:', error, event.userEmail);
-                reject(false);
-            }
+                try {
+                    await sendEmail(welcomeEmail);
+                    console.log(`Website signup email successfully sent to ${event.userEmail}`);
+                    resolve();
+                } catch (error) {
+                    console.error(error, event.userEmail);
+                    reject(false);
+                    throw error;
+                }
             }, minutesToMilliseconds(this.delayInMins));
         });
     }
@@ -46,7 +48,8 @@ export class Flow {
             await sendEmail(socksDispatchedEmail);
             console.log(`Sock purchase email successfully sent to ${event.userEmail}`);
         } catch (error) {
-            console.error('Failed to send email:', error, event.userEmail);
+            console.error(`Failed to send email to: ${event.userEmail}`, error);
+            throw error;
         }
     }
 }

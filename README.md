@@ -1,5 +1,5 @@
 # Pull Your Socks Up 🧦
-Let's sell some socks! This tool is here to automate email marketting, drive purchase conversations, 
+Let's sell some socks! This tool is here to automate email marketting, drive purchase conversations,
 and keep people's feet nice and cosy 🧦
 
 ## Getting setup for developers
@@ -25,7 +25,8 @@ Runs the tests within the `/test` directory.
 
 ## How to call the api
 
-With the server running, do a POST request to the `/email` endpoint. 
+With the dependencies installed `npm i` and server running `npm run start`,
+do a POST request to the `/email` endpoint.
 
 >TIP: API requests can be made using the [Postman](https://www.postman.com/downloads/) application
 
@@ -56,3 +57,19 @@ Or...
 `SockPurchased` and `websiteSignup` events should trigger their respective flows shown below 👇
 
 ![alt text](images/flow-diagram.png)
+
+You should observe:
+1. 200 response with a message confirming the email process has started and the respective data e.g.
+```
+{
+    "message": "Email processing started",
+    "data": {
+        "eventName": "sockPurchased",
+        "userEmail": "sarah@healthtech1.uk"
+    }
+}
+```
+OR if the eventName is invalid, it will return an error.
+
+2. Console log confirming the sock purchase email has been sent (after any delay)
+OR an Error will be raised if email fails to send

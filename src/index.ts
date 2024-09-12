@@ -20,8 +20,14 @@ app.post('/email', async (req: Request, res: Response) => {
     try {
         const flow = new Flow();
         await flow.triggerFlow(req.body);
-        res.status(200).send({ message: 'Email processing started', data: req.body });
-    } catch(exec: any) {
-        res.status(500).send({ message: 'Error processing email flow', error: exec.message });
+        res.status(200).send({ message: 'Email processing complete', data: req.body });
+    } catch (error) {
+        if (error instanceof Error) {
+            res.status(500).send({ message: 'Error processing email flow', error: error.message });
+        } else {
+            // handle generic errors
+            res.status(500).send({ message: 'Unknown error occured' });
+        }
+        // TODO: add custom error handling
     }
 })
