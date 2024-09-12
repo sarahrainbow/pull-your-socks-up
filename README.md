@@ -1,14 +1,14 @@
 # Pull Your Socks Up 🧦
-Let's sell some socks! This tool is here to automate email marketting, drive purchase conversations
-and, keep people's feet nice and cosy 🧦
+Let's sell some socks! This tool is here to automate email marketting, drive purchase conversations, 
+and keep people's feet nice and cosy 🧦
 
 ## Getting setup for developers
 
-Clone this repo and then within the project root directory you can run:
+Clone this repo and then within the root directory you can run:
 
 ### `npm i`
 
-Install dependencies
+Installs dependencies.
 
 
 ### `npm run start`
@@ -25,7 +25,11 @@ Runs the tests within the `/test` directory.
 
 ## How to call the api
 
-With the server running, do a POST request to the `/email` endpoint.
+With the server running, do a POST request to the `/email` endpoint. 
+
+>TIP: API requests can be made using the [Postman](https://www.postman.com/downloads/) application
+
+![alt text](images/postman.png)
 
 The request body should be in JSON format and contain the following properties:
 
@@ -51,4 +55,4 @@ Or...
 
 `SockPurchased` and `websiteSignup` events should trigger their respective flows shown below 👇
 
-![alt text](flow-diagram.png)
+![alt text](images/flow-diagram.png)
